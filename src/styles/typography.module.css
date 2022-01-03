@@ -3,6 +3,11 @@
 	padding-left: 90px;
 }
 
+.whtHdr {
+	color: white;
+	font-family: CircularXXTT-Black;
+}
+
 .pinkHdr {
 	color: #FB2961;
 	font-family: CircularXXTT-Black;
@@ -39,3 +44,15 @@
 	padding-right: 6px;
 }
 
+.live {
+	background-color: #FB2961;
+	border-radius: 26px;
+	border: white 2px solid;
+	color: white;
+	text-align: center;
+	width: 48px;
+	font-size: 12px;
+	position: relative;
+	top: -13px;
+	left: 1px;
+}

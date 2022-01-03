@@ -7,10 +7,19 @@ import CardActionArea from '@mui/material/CardActionArea';
 import { Link } from 'react-router-dom'; 
 
 function Stream (props) {
-	const { cover_image, audience_count, username, nickname, channel_id } = props.data;
+	const { cover_image, audience_count, username, nickname, channel_id, avatar } = props.data;
 	return (
 		<Card sx={{width: '200px', height: '284px', border: "solid #FB2961 4px" }}>
-			<CardActionArea component={Link} to={`/${channel_id}`}>
+			<CardActionArea component={Link} to={`/${channel_id}`}
+				state={{
+					cover_image,
+					audience_count,
+					username,
+					nickname,
+					channel_id,
+					avatar
+				}}
+			>
 				<Box sx={{position: "relative"}}>
 					<Box
 						sx={{

@@ -1,19 +1,17 @@
-import { IconButton, Typography } from '@mui/material';
+import { IconButton } from '@mui/material';
 import Toolbar from '@mui/material/Toolbar';
 import MenuIcon from '@mui/icons-material/Menu';
 import { styled } from '@mui/material/styles';
 import MuiAppBar from '@mui/material/AppBar';
-import App from '../App';
 import logo from '../assets/logo.png';
 import styles from '../styles/typography.module.css';
 
-function Header() { // pass open as props
+function Header(props) {
 	const drawerWidth = 240;
 
 	const AppBar = styled(MuiAppBar, {
 		shouldForwardProp: (prop) => prop !== 'open',
 	})(({ theme, open }) => ({
-		zIndex: theme.zIndex.drawer + 1,
 		backgroundColor: "#0F0B46",
 		borderBottomColor: "white !important",
 		border: "solid #0F0B46 0.1px",
@@ -41,11 +39,17 @@ function Header() { // pass open as props
 				<IconButton
 					color="inherit"
 					aria-label="open drawer"
+					onClick={props.handleMobileOpen}
 					edge="end"
 					sx={{
 						marginRight: '36px',
 						right: 0,
-    				position: 'absolute'
+    				position: 'absolute',
+						display: {
+							xs: 'block',
+							md: 'none',
+							lg: 'none'
+						}
 					}}
 				>
 					<MenuIcon />

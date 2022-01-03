@@ -1,0 +1,13 @@
+.spacing {
+	padding: 32px;
+	padding-top: 64px;
+}
+
+.closeBtn {
+	color: #FB2961 !important;
+	position: absolute !important;
+	top: 0;
+	right: 0;
+	height: 50px;
+	width: 50px;
+}

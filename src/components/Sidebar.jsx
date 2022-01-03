@@ -27,6 +27,9 @@ function Sidebar (props) {
 			duration: theme.transitions.duration.enteringScreen,
 		}),
 		overflowX: 'hidden',
+		[theme.breakpoints.down('sm')]: {
+      width: 0,
+    },
 	});
 
 	const closedMixin = (theme) => ({
@@ -42,6 +45,9 @@ function Sidebar (props) {
 		[theme.breakpoints.up('sm')]: {
 			width: `calc(${theme.spacing(9)} + 1px)`,
 		},
+		[theme.breakpoints.down('sm')]: {
+      width: 0,
+    },
 	});
 
 	const Drawer = styled(MuiDrawer, { shouldForwardprops: (props) => props !== 'open' })(
@@ -64,7 +70,7 @@ function Sidebar (props) {
 	return (
 		<Drawer variant="permanent" open={props.open}
 			sx={{
-				'& .MuiDrawer-paper': { marginTop: '65px' }
+				'& .MuiDrawer-paper': { marginTop: '66px' }
 			}}
 		>
 			<DrawerHeader>

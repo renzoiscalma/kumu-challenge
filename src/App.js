@@ -3,10 +3,11 @@ import CircularProgress from '@mui/material/CircularProgress';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './App.css';
-import { Content, DrawerHeader, Header, Sidebar } from './components/';
+import { Content, DrawerHeader, Header, Sidebar, MobileDrawer } from './components/';
 
 function App() {
   const [open, setOpen] = useState(true);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [page, setPage] = useState(1);
   const [liveStreams, setLiveStreams] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -22,15 +23,19 @@ function App() {
 
     fetchData().then(() => {
       setIsLoading(isLoading => {
-        console.log('loading');
         return isLoading ? false : false;
       });
-      console.log(liveStreams);
     });
   }, [page])
   
   const handleOpen = () => {
     setOpen(open => {
+      return open ? false : true;
+    });
+  }
+
+  const handleMobileOpen = () => {
+    setMobileOpen(open => {
       return open ? false : true;
     });
   }
@@ -48,11 +53,12 @@ function App() {
         </Box>
       : 
         <Box sx={{display: 'flex'}} >
-          <Header open={open} handleOpen={handleOpen}></Header>
+          <Header open={open} handleOpen={handleOpen} handleMobileOpen={handleMobileOpen}></Header>
           <Sidebar open={open} handleOpen={handleOpen} live={liveStreams}></Sidebar>
+          <MobileDrawer open={mobileOpen} handleMobileOpen={handleMobileOpen}></MobileDrawer>
           <Box component="main" sx={{}}>
             <DrawerHeader />
-            <Content handleSeeMore={handleSeeMore} live={liveStreams}></Content>
+            <Content open={open} handleSeeMore={handleSeeMore} live={liveStreams}></Content>
           </Box>
         </Box>
     }

@@ -2,14 +2,18 @@ import Card from '@mui/material/Card';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import Avatar from '@mui/material/Avatar';
+import styles from '../styles/typography.module.css';
+import { width } from '@mui/system';
 
 function StreamPage(props) {
-	// const { cover_image, audience_count, username, nickname, channel_id } = props.data;
 	const [streamData, setStreamData] = useState({});
 	const channelId = useParams().channelId;
-	console.log(useParams());
+	let data = useLocation();
+	const { cover_image, audience_count, username, nickname, channel_id, avatar } = useLocation().state;
+	console.log(useLocation());
 	useEffect(async () => {
 		const fetchData = async() => {
 			const result = await axios
@@ -25,33 +29,29 @@ function StreamPage(props) {
 		fetchData();
 	}, []);
 	return (
-		<>
-			<Grid container spacing={2} paddingTop={3}>
+			<Box sx={{ width: "90vw", height: "90vh" }}>
+			<Grid container spacing={2}>
 				<Grid item xs={12}>
-					<Box
-						display="flex"
-						justifyContent="center"
-						alignItems="center"
-						sx={{bgcolor: "black"}}
-					>
-						<img src='https://mui.com/static/images/cards/contemplative-reptile.jpg' />
-					</Box>
+					<img src={cover_image} style={{maxHeight: "500px"}}/>
 				</Grid>
-				<Grid item xs={2} 
-					md={1.2}
+			</Grid>
+			<Grid container spacing={4} paddingTop={3}>
+				<Grid item xs={1} sm={2}
+					md={2}
 				>
-					LIVE
+					<Avatar src={avatar} sx={{border: "3px solid #FB2961", width: "50px", height: "50px"}}/>
+					<div className={styles.live}>LIVE</div>
 				</Grid>
 				<Grid item xs={3}>
-					<div>
-						John Doe
+					<div className={styles.whtHdr}>
+						{nickname}
 					</div>
-					<div>
-						@Test Doe
+					<div className={styles.whtHdr}>
+						@{username}
 					</div>
 				</Grid>
 			</Grid>
-		</>
+		</Box>
 	)
 }
 
