@@ -1,24 +1,26 @@
-import logo from './logo.svg';
+import Box from '@mui/material/Box';
 import './App.css';
+import { DrawerHeader, Header, Sidebar, Content } from './components/';
+import { useState } from 'react';
 
 function App() {
+  const [open, setOpen] = useState(true);
+
+  const handleOpen = () => {
+    setOpen(open => {
+      return open ? false : true;
+    });
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box sx={{display: 'flex'}}>
+      <Header open={open} handleOpen={handleOpen}></Header>
+      <Sidebar open={open} handleOpen={handleOpen}></Sidebar>
+      <Box component="main" sx={{}}>
+        <DrawerHeader />
+        <Content></Content>
+      </Box>
+    </Box>
   );
 }
 
