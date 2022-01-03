@@ -2,18 +2,25 @@ import MuiDrawer from '@mui/material/Drawer';
 import { styled } from '@mui/material/styles';
 import { DrawerHeader } from '.';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { Typography } from '@mui/material';
 import { List } from '@mui/material';
+import styles from '../styles/typography.module.css';
+
 
 function Sidebar (props) {
 	const drawerWidth = 240;
-
+	console.log(props.live);
+	
 	const openedMixin = (theme) => ({
+		backgroundColor: "#0F0B46",
+		color: "white",
+		borderRightColor: "white !important",
 		width: drawerWidth,
 		transition: theme.transitions.create('width', {
 			easing: theme.transitions.easing.sharp,
@@ -23,6 +30,9 @@ function Sidebar (props) {
 	});
 
 	const closedMixin = (theme) => ({
+		backgroundColor: "#0F0B46",
+		color: "white",
+		borderRightColor: "white !important",
 		transition: theme.transitions.create('width', {
 			easing: theme.transitions.easing.sharp,
 			duration: theme.transitions.duration.leavingScreen,
@@ -59,24 +69,20 @@ function Sidebar (props) {
 		>
 			<DrawerHeader>
 				<IconButton onClick={props.handleOpen}>
-					<ChevronLeftIcon />
+					<LogoutOutlinedIcon className={(props.open) ? styles.flipToggle : styles.toggle} />
 				</IconButton>
 			</DrawerHeader>
-			<Typography paddingLeft="16px" variant="h6" noWrap component="div">
+			<div className={styles.users}>
 				Users
-			</Typography>
+			</div>
 			<List>
-				{['Person 1', 'Person 2', 'Person 3', 'Person 4'].map((text, index) => (
-					<ListItem button key={text}>
+				{props.live.slice(0, 6).map((data, index) => (
+					<ListItem button key={data.username} sx={{paddingBottom: "15px !important"}}>
 						<ListItemIcon>
-							<AccountCircleOutlinedIcon 
-								sx={{
-									width: '36px',
-									height: '36px'
-								}}
-							/>
+							<Avatar src={data.avatar} sx={{border: "3px solid #4AEFE9"}}/>
 						</ListItemIcon>
-						<ListItemText primary={text} />
+						{/* <ListItemText primary={data.username} /> */}
+						<div className={styles.username}> {data.username} </div>
 					</ListItem>
 				))}
 			</List>

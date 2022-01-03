@@ -1,0 +1,41 @@
+.header {
+	font-family: CircularXXTT-Black;
+	padding-left: 90px;
+}
+
+.pinkHdr {
+	color: #FB2961;
+	font-family: CircularXXTT-Black;
+}
+
+.seeMoreAlign {
+	text-align: center;
+	padding: 18px;
+}
+.seeMore {
+	color: #FB2961 !important;
+	text-decoration-color: #FB2961 !important;
+	font-family: CircularXXTT-Black
+}
+
+.users {
+	padding-left: 18px;
+	color: #FB2961;
+	font-family: CircularXXTT-Black;
+}
+
+.username {
+	font-family: CircularXXTT-Medium;
+	padding-left: 4px;
+}
+
+.flipToggle {
+	color: #4AEFE9;
+	transform: scaleX(-1);
+}
+
+.toggle {
+	color: #4AEFE9;
+	padding-right: 6px;
+}
+

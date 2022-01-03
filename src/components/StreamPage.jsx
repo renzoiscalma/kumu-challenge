@@ -1,7 +1,29 @@
 import Card from '@mui/material/Card';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-function StreamPage({data}) {
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+
+function StreamPage(props) {
+	// const { cover_image, audience_count, username, nickname, channel_id } = props.data;
+	const [streamData, setStreamData] = useState({});
+	const channelId = useParams().channelId;
+	console.log(useParams());
+	useEffect(async () => {
+		const fetchData = async() => {
+			const result = await axios
+				.post(`https://liveapi.kumu.live/live/regular-data`, {
+					id: channelId
+				}, {
+					headers: {
+						'device-id': '61d323ead0b65',
+					}
+				});
+		}
+
+		fetchData();
+	}, []);
 	return (
 		<>
 			<Grid container spacing={2} paddingTop={3}>
@@ -10,7 +32,6 @@ function StreamPage({data}) {
 						display="flex"
 						justifyContent="center"
 						alignItems="center"
-						// minHeight="100vh"
 						sx={{bgcolor: "black"}}
 					>
 						<img src='https://mui.com/static/images/cards/contemplative-reptile.jpg' />

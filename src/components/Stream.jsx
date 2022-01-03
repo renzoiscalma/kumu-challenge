@@ -4,11 +4,13 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import CardActionArea from '@mui/material/CardActionArea';
+import { Link } from 'react-router-dom'; 
 
-function Stream ({data}) {
+function Stream (props) {
+	const { cover_image, audience_count, username, nickname, channel_id } = props.data;
 	return (
-		<Card sx={{width: '200px', height: '284px'}}>
-			<CardActionArea>
+		<Card sx={{width: '200px', height: '284px', border: "solid #FB2961 4px" }}>
+			<CardActionArea component={Link} to={`/${channel_id}`}>
 				<Box sx={{position: "relative"}}>
 					<Box
 						sx={{
@@ -39,15 +41,13 @@ function Stream ({data}) {
 								marginRight: '2px'
 							}}
 						/>
-						<Typography variant="body2">{data.views}</Typography>
+						<Typography variant="body2">{audience_count}</Typography>
 					</Box>
 					<CardMedia
 						component="img"
 						width= "200"
 						height="284"
-						image="https://mui.com/static/images/cards/contemplative-reptile.jpg"
-						alt="green iguana"
-						
+						image={cover_image}
 					/>
 					<Box
 						sx={{
@@ -64,8 +64,8 @@ function Stream ({data}) {
 							borderRadius: "5px",
 						}}
 					>
-						<Typography variant="h7">{data.title}</Typography>
-						<Typography variant="body2">{data.tag}</Typography>
+						<Typography variant="h7">{nickname}</Typography>
+						<Typography variant="body2">@{username}</Typography>
 					</Box>
 				</Box>
 			</CardActionArea>

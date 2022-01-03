@@ -4,6 +4,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { styled } from '@mui/material/styles';
 import MuiAppBar from '@mui/material/AppBar';
 import App from '../App';
+import logo from '../assets/logo.png';
+import styles from '../styles/typography.module.css';
 
 function Header() { // pass open as props
 	const drawerWidth = 240;
@@ -12,6 +14,9 @@ function Header() { // pass open as props
 		shouldForwardProp: (prop) => prop !== 'open',
 	})(({ theme, open }) => ({
 		zIndex: theme.zIndex.drawer + 1,
+		backgroundColor: "#0F0B46",
+		borderBottomColor: "white !important",
+		border: "solid #0F0B46 0.1px",
 		transition: theme.transitions.create(['width', 'margin'], {
 			easing: theme.transitions.easing.sharp,
 			duration: theme.transitions.duration.leavingScreen,
@@ -28,19 +33,19 @@ function Header() { // pass open as props
 
 	return (
 		<AppBar>
-			<Toolbar sx={{justifyContent: "space-between"}}>
-				<Typography variant="h6" noWrap component="div">
+			<Toolbar>
+				<img src={logo} width="100px"></img>
+				<div className={styles.header}>
 					Streams
-				</Typography>
+				</div>
 				<IconButton
 					color="inherit"
 					aria-label="open drawer"
-					// onClick={handleDrawerOpen} todo pass handleDrawerOpen as prop
 					edge="end"
 					sx={{
 						marginRight: '36px',
-						display: 'none'
-						// ...(open && { display: 'none' }),
+						right: 0,
+    				position: 'absolute'
 					}}
 				>
 					<MenuIcon />
