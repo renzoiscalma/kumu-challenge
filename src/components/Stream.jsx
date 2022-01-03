@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import CardActionArea from '@mui/material/CardActionArea';
 import { Link } from 'react-router-dom'; 
+import styles from '../styles/typography.module.css';
 
 function Stream (props) {
 	const { cover_image, audience_count, username, nickname, channel_id, avatar } = props.data;
@@ -73,8 +74,8 @@ function Stream (props) {
 							borderRadius: "5px",
 						}}
 					>
-						<Typography variant="h7">{nickname}</Typography>
-						<Typography variant="body2">@{username}</Typography>
+						<div className={styles.nicknameStream}>{nickname}</div>
+						<div className={styles.usernameStream}>@{username}</div>
 					</Box>
 				</Box>
 			</CardActionArea>

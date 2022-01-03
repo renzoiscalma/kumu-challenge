@@ -1,14 +1,11 @@
 import MuiDrawer from '@mui/material/Drawer';
 import { styled } from '@mui/material/styles';
 import { DrawerHeader } from '.';
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import { Typography } from '@mui/material';
 import { List } from '@mui/material';
 import styles from '../styles/typography.module.css';
 

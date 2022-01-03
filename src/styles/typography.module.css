@@ -56,3 +56,13 @@
 	top: -13px;
 	left: 1px;
 }
+
+.nicknameStream {
+	font-family: CircularXXTT-Medium;
+
+}
+
+.usernameStream {
+	font-family: CircularXXTT-Light;
+	font-size: 12px;
+}

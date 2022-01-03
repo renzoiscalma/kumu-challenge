@@ -2,6 +2,8 @@ import Drawer from '@mui/material/Drawer';
 import styles from '../styles/MobileDrawer.module.css';
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
+import logo from '../assets/logo.png';
+
 function MobileDrawer (props) {
 	
 	return (
@@ -25,6 +27,9 @@ function MobileDrawer (props) {
 			<IconButton className={styles.closeBtn} onClick={props.handleMobileOpen} aria-label="close">
 				<CloseIcon />
 			</IconButton>
+			<div className={styles.centerImg} >
+				<img src={logo} width="100px" />
+			</div>
 		</Drawer>
 	)
 }

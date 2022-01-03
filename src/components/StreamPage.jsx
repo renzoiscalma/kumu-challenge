@@ -1,4 +1,3 @@
-import Card from '@mui/material/Card';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import axios from 'axios';
@@ -6,7 +5,6 @@ import { useParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Avatar from '@mui/material/Avatar';
 import styles from '../styles/typography.module.css';
-import { width } from '@mui/system';
 
 function StreamPage(props) {
 	const [streamData, setStreamData] = useState({});

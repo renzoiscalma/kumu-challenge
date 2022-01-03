@@ -32,7 +32,7 @@ function Header(props) {
 	return (
 		<AppBar>
 			<Toolbar>
-				<img src={logo} width="100px"></img>
+				<img src={logo} width="100px" />
 				<div className={styles.header}>
 					Streams
 				</div>
